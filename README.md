@@ -2,14 +2,14 @@
 ===
 
 ## 前情提要
-> 最近協助一位正在讀大學的年輕朋友，安排一系列的程式語言學習，其中Java與Spring是我想到最適合入手物件導向程式語言的標的，因此，我打算把手上幾本與Java、Spring、設計模式等書籍，做一系列的整理，並以Spring6與測試的角度去思考與觀察應用程式的開發迭代。
+> 最近協助一位正在讀大學的年輕朋友，安排一系列的程式語言學習，其中Java與Spring是我想到最適合入手物件導向程式語言的標的，因此，我打算把手上幾本與Java、Spring、設計模式等書籍，做一系列的整理，並以Spring6與測試的角度去思考與觀察應用程式的開發迭代。在許多書籍或是網站上的示範程式，開始採用Spring Boot 2甚至是Spring Boot 3的版本做為標的，但為了回歸Spring Framework的本質，我在這系列的前期，皆會使用Spring Framework 6為基礎，為大家進行解說。
 
 > Spring Framework自2003年被發展出來，即是為了解決在企業級應用開發時，所遇到的各種複雜問題。其記住的兩大主軸為IoC與AOP，我將會在後續的文章中，一一以實際程式碼進行說明。這篇我先為大家示範Spring的Bean組裝方式。
 
 ## 主題
 > 在Java應用程式開發時，物件的生成與管理是極為重要的一件事情，尤其在系統需要面對不斷改變的要求，除了許多的設計模式，Spring框架也提供了這樣的能力。這篇將以紅頭鴨(Red Head Duck)與它可以出的聲音Quack做為範例，並利用Spring的Configuration、Bean、Autowire將叫聲注入至紅頭鴨之中。
 ### 設定
-> Maven部分：為了不讓學習目標偏移，我們讓設定只使用Spring Context，避免使用太過於複雜的Spring Boot 設定。
+> Maven的pom.xml檔部分：為了不讓學習目標失焦，我們只在pom中使用Spring Context，避免使用太過於複雜的Spring Boot設定。
 ```gherkin=
 <dependencies>
     <dependency>
