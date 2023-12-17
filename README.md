@@ -48,6 +48,7 @@ public class DuckConfig {
 }
 ```
 ### 測試
+> 許多Spring的書籍，或是許多人的示範程式碼，多半是使用main method或是用網頁的方式做為驗證結果的方式，但實務上，不太會在正式程式碼中放入 main method，用網頁去驗證結果的效率不高，且容易讓初學者失焦。因此，我使用Java中最常被使用的開發框架JUnit，這在後續的開發工作中引入單元測試，甚至是測試驅動開發(Test Driven Development aka TDD)都會是一個比較好的開始。
 > 在Spring框架與其他測試框架有不錯的整合，在這裡我們先以JUnit5做為主要的測試框架；因此過去的@RunWith需改成@ExtendWith，而SpringJUnit4ClassRunner.class須改用SpringExtension.class。透過這個整合功能，我們可以在不用整個應用啟動的情況下，針對部分功能進行執行與測試。
 > 在method beans_should_not_be_null_test，我們想確認用@Autowire去Spring Container裡，可以取用到紅頭鴨與叫聲的Bean。
 > method duck_display_test 是要確認鴨子的顯示名稱。
