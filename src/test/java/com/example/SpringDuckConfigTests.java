@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class) // JUnit4與Spring5為 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= DuckConfig.class)
-public class DuckConfigTests {
+public class SpringDuckConfigTests {
 
     @Autowired
     Duck redheadDuck;
