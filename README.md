@@ -7,7 +7,7 @@
 > Spring Framework自2003年被發展出來，即是為了解決在企業級應用開發時，所遇到的各種複雜問題。其記住的兩大主軸為IoC與AOP，我將會在後續的文章中，一一以實際程式碼進行說明。這篇我先為大家示範Spring的Bean組裝方式。
 
 ## 問題
-> 在Java應用程式開發時，物件的生成與管理是極為重要的一件事情，尤其在系統需要面對不斷改變的要求。以不能飛的橡皮鴨Rubber Duck為例，雖然原則上橡皮鴨不會在執行期突然從不會飛變成會飛，但在建構子中，使用new的方式初始化了flyBehavior，將使得Rubber Duck與flyBehavior兩個物件緊緊綁定。因此，在設計技巧中，可以使用依賴注入的方式(DI，Dependency Injection)，將兩個緊密的物件解耦合，讓程式架構可以面對更多的改變。  
+> 在Java應用程式開發時，物件的生成與管理是極為重要的一件事情，尤其在系統需要面對不斷改變的要求。以不能飛的橡皮鴨Rubber Duck為例，雖然原則上橡皮鴨不會在執行期突然從不會飛變成會飛，但在建構子中，使用new的方式初始化了flyBehavior，將使得Rubber Duck與flyBehavior兩個物件緊緊綁定。因此，在設計技巧中，可以使用依賴注入的方式(DI，Dependency Injection)，將兩個緊密的物件解耦合，讓程式架構可以有彈性的指定不同的飛行行為FlyBehavior。  
 
 > 然而Spring框架也提供了這樣的能力。在此我要以紅頭鴨(Red Head Duck)與它可以出的聲音Quack做為範例，並利用Spring的Configuration、Bean、Autowire將叫聲注入至紅頭鴨之中。
 
