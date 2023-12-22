@@ -11,6 +11,9 @@
 
 > 然而Spring框架也提供了這樣的能力。在此我要以紅頭鴨(Red Head Duck)與它可以出的聲音Quack做為範例，並利用Spring的Configuration、Bean、Autowire將叫聲注入至紅頭鴨之中。
 
+## 解決方案
+
+
 ### 設定
 > Maven的pom.xml檔部分：為了不讓學習目標失焦，我們只在pom中使用Spring Context，避免使用太過於複雜的Spring Boot設定。
 ```gherkin=
@@ -34,25 +37,8 @@
     </dependency>
 </dependencies>
 ```
-> 程式碼部分:設定的類別DuckConfig裡，我們使用了@Configuration，並在method quack與redheadDuck上一行，使用了@Bean，表示將這兩個Bean交給Spring的Container去管理，後許也可以讓Container裡的服務取用，測試程式裡使用的@Autowire就是取用這邊指定的Bean。
-```gherkin=
-@Configuration
-public class DuckConfig {
-
-    @Bean
-    public QuackBehavior quack(){
-        return new Quack();
-    }
-    @Bean
-    public Duck redheadDuck(){
-        Duck redheadDuck = new RedheadDuck();
-        redheadDuck.setQuackBehavior(quack());
-        return redheadDuck;
-    }
-}
-```
 ### 測試
-> 許多Spring的書籍，或是許多人的示範程式碼，多半是使用main method或是用網頁的方式做為驗證結果的方式，但實務上，不太會在正式程式碼中放入 main method，用網頁去驗證結果的效率不高，且容易讓初學者失焦。因此，我使用Java中最常被使用的開發框架JUnit，這在後續的開發工作中引入單元測試，甚至是測試驅動開發(Test Driven Development aka TDD)都會是一個比較好的開始。  
+> 許多Spring的書籍，或是許多人的示範程式碼，多半是使用main method或是用網頁的方式做為驗證結果的方式，但實務上，不太會在正式程式碼中放入 main method，用網頁去驗證結果的效率不高，且容易讓初學者失焦。因此，我使用Java中最常被使用的開發框架JUnit，這在後續的開發工作中引入單元測試，甚至是測試驅動開發(Test Driven Development aka TDD)都會是一個比較好的開始。
 
 > 在Spring框架與其他測試框架有不錯的整合，在這裡我們先以JUnit5做為主要的測試框架；因此過去的@RunWith需改成@ExtendWith，而SpringJUnit4ClassRunner.class須改用SpringExtension.class。透過這個整合功能，我們可以在不用整個應用啟動的情況下，針對部分功能進行執行與測試。
 > 在method beans_should_not_be_null_test，我們想確認用@Autowire去Spring Container裡，可以取用到紅頭鴨與叫聲的Bean。
@@ -86,4 +72,23 @@ public class DuckConfigTests {
     }
 }
 ```
+
+> 程式碼部分:設定的類別DuckConfig裡，我們使用了@Configuration，並在method quack與redheadDuck上一行，使用了@Bean，表示將這兩個Bean交給Spring的Container去管理，後許也可以讓Container裡的服務取用，測試程式裡使用的@Autowire就是取用這邊指定的Bean。
+```gherkin=
+@Configuration
+public class DuckConfig {
+
+    @Bean
+    public QuackBehavior quack(){
+        return new Quack();
+    }
+    @Bean
+    public Duck redheadDuck(){
+        Duck redheadDuck = new RedheadDuck();
+        redheadDuck.setQuackBehavior(quack());
+        return redheadDuck;
+    }
+}
+```
+
 
