@@ -18,6 +18,7 @@ public class SpringDuckConfigTests {
 
     @Autowired
     QuackBehavior quack;
+
     @Test
     public void beans_should_not_be_null_test(){
         assertNotNull(redheadDuck);
